@@ -36,3 +36,5 @@ group :development do
   gem 'better_errors'
   gem 'rails_layout'
 end
+gem "haml-rails", "~> 2.0"
+

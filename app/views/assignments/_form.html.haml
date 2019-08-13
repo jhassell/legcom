@@ -1,0 +1,20 @@
+= form_for @assignment do |f|
+  - if @assignment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@assignment.errors.count, "error")} prohibited this assignment from being saved:"
+      %ul
+        - @assignment.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :member_last_name
+    - members = options_from_collection_for_select(Member.all, :id, :last_name)
+    = f.select :member_id, members, include_blank: "Choose a member"
+
+  .field
+    = f.label :committee_name
+    - committees = options_from_collection_for_select(Committee.all, :id, :name)
+    = f.select :committee_id, committees, include_blank: "Choose a committee"
+
+  .actions
+    = f.submit 'Save'

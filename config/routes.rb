@@ -5,5 +5,11 @@ Rails.application.routes.draw do
     end
   root to: 'visitors#index'
   devise_for :users
+  resources :assignments
+  resources :committees
+  resources :members
   resources :users
+
+  post ':controller(/:action(/:id(.:format)))'
+  get ':controller(/:action(/:id(.:format)))'
 end

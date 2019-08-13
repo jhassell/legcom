@@ -12,6 +12,31 @@
 
 ActiveRecord::Schema.define(version: 2019_08_10_040325) do
 
+  create_table "assignments", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "committee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "committees", force: :cascade do |t|
+    t.string "name"
+    t.string "meeting_day"
+    t.string "meeting_time"
+    t.string "meeting_room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "member_type"
+    t.string "member_title"
+    t.string "last_name"
+    t.string "first_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
