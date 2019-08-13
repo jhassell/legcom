@@ -6,6 +6,10 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
+  has_many :members
+  has_many :assignments
+  has_many :committees
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

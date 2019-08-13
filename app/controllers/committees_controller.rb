@@ -5,7 +5,7 @@ class CommitteesController < ApplicationController
   # GET /committees
   # GET /committees.json
   def index
-    @committees = Committee.all
+    @committees = Committee.where(user_id: current_user.id)
   end
 
   # GET /committees/1
@@ -26,6 +26,7 @@ class CommitteesController < ApplicationController
   # POST /committees.json
   def create
     @committee = Committee.new(committee_params)
+    @committee.user_id = current_user.id
 
     respond_to do |format|
       if @committee.save

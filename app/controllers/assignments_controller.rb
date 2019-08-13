@@ -2,8 +2,8 @@ require 'uri'
 require 'net/http'
 
 class AssignmentsController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -24,6 +24,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignment.user_id = current_user.id
 
     respond_to do |format|
       if @assignment.save
