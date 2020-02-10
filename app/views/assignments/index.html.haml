@@ -1,21 +1,28 @@
 
-%h1 Listing assignments
+%h1 Assignments
 
-%table
+= link_to 'New Assignment', new_assignment_path
+
+%table{:width => "100%"}
   %thead
     %tr
-      %th Member
+      %th.text-center Member Type
+      %th.text-center Member
       %th
-      %th Committee
-      %th
-      %th
+      %th.text-center Committee Office
+      %th.text-center Committee
 
   %tbody
-    - @assignments.each do |assignment|
+    - @assignments.order("committee_id ASC").each do |assignment|
       %tr
+        %td= assignment.member.member_type
         %td= assignment.member.last_name
         %td= assignment.member.first_name
-        %td= assignment.committee.name
+        - if assignment.committee_office.present?
+          %td= assignment.committee_office.name
+        - else
+          %td
+        %td.text-center= assignment.committee.name
         %td= link_to 'Show', assignment
         %td= link_to 'Edit', edit_assignment_path(assignment)
         %td= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }
@@ -24,4 +31,3 @@
 
 %body
 
-= link_to 'New Assignment', new_assignment_path

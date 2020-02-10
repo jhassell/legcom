@@ -8,13 +8,19 @@
 
   .field
     = f.label :member_last_name
-    - members = options_from_collection_for_select(Member.where(user_id: current_user.id), :id, :last_name)
+    - members = options_from_collection_for_select(Member.where(user_id: current_user.id).order('last_name ASC'), :id, :last_name, @assignment.member_id)
+
     = f.select :member_id, members, include_blank: "Choose a member"
 
   .field
     = f.label :committee_name
-    - committees = options_from_collection_for_select(Committee.where(user_id: current_user.id), :id, :name)
+    - committees = options_from_collection_for_select(Committee.where(user_id: current_user.id), :id, :name, @assignment.committee_id)
     = f.select :committee_id, committees, include_blank: "Choose a committee"
+
+  .field
+    = f.label :committee_office
+    - offices = options_from_collection_for_select(CommitteeOffice.all, :id, :name, @assignment.committee_office_id)
+    = f.select :committee_office_id, offices, include_blank: "Choose a committee office"
 
   .actions
     = f.submit 'Save'

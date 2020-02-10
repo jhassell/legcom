@@ -8,15 +8,12 @@
 
   .field
     = f.label :member_type
-    = f.text_field :member_type
-  .field
-    = f.label :member_title
-    = f.text_field :member_title
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
+    = f.text_field :member_type, value: "State Representative"
   .field
     = f.label :first_name
     = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
   .actions
     = f.submit 'Save'

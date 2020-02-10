@@ -8,7 +8,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    # @assignments = Assignment.all.order("committee_id ASC")
+    @assignments = Assignment.joins(:member).order("members.member_type ASC, committee_id ASC, members.last_name ASC")
   end
 
   # GET /assignments/new

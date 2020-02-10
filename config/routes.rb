@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :committee_offices
   namespace :admin do
       resources :users
       root to: "users#index"
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :assignments
   resources :committees
+  resources :committee_offices
   resources :members
   resources :users
 

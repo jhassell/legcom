@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.where(user_id: current_user.id)
+    @members = Member.where(user_id: current_user.id).order('member_type ASC, last_name ASC')
   end
 
   # GET /members/1
@@ -71,6 +71,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:member_type, :member_title, :last_name, :first_name)
+      params.require(:member).permit(:member_type, :last_name, :first_name)
     end
 end

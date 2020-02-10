@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_184804) do
+ActiveRecord::Schema.define(version: 2020_02_10_023303) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "member_id"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2019_08_13_184804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "committee_office_id"
+  end
+
+  create_table "committee_offices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "committees", force: :cascade do |t|
@@ -32,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_08_13_184804) do
 
   create_table "members", force: :cascade do |t|
     t.string "member_type"
-    t.string "member_title"
     t.string "last_name"
     t.string "first_name"
     t.datetime "created_at", null: false

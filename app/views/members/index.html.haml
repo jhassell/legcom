@@ -1,10 +1,9 @@
-%h1 Listing members
+%h1 Members
 
-%table{:style => "border: 1px; width: 50%"}
+%table{:style => "border: 1px; width: 100%"}
   %thead
     %tr
       %th Member type
-      %th Member title
       %th Last Name
       %th First Name
       %th Committees
@@ -15,10 +14,9 @@
     - @members.each do |member|
       %tr
         %td= member.member_type
-        %td= member.member_title
         %td= member.last_name
         %td= member.first_name
-        %td= member.committees.pluck(:name).join(". ")
+        %td= member.committees.pluck(:name).join("~ ")
         %td= link_to 'Show', member
         %td= link_to 'Edit', edit_member_path(member)
         %td= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }

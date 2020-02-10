@@ -1,0 +1,13 @@
+= form_for @committee_office do |f|
+  - if @committee_office.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@committee_office.errors.count, "error")} prohibited this committee_office from being saved:"
+      %ul
+        - @committee_office.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

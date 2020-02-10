@@ -1,0 +1,21 @@
+%h1 Committee Offices
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @committee_offices.each do |committee_office|
+      %tr
+        %td= committee_office.name
+        %td= link_to 'Show', committee_office
+        %td= link_to 'Edit', edit_committee_office_path(committee_office)
+        %td= link_to 'Destroy', committee_office, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Committee office', new_committee_office_path

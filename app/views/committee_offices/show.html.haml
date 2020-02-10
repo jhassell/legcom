@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @committee_office.name
+
+= link_to 'Edit', edit_committee_office_path(@committee_office)
+\|
+= link_to 'Back', committee_offices_path
